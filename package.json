@@ -1,0 +1,9 @@
+{
+  "name": "gambleWithFriends",
+  "version": "1.0.0",
+  "description": "ruin friendships the fun way!",
+  "main": "index.js",
+  "repository": "git@github.com:alexzobi/gambleWithFriends.git",
+  "author": "Alex <asobiloff@gmail.com>",
+  "license": "MIT"
+}
