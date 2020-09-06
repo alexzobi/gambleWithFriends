@@ -2,13 +2,12 @@ require('dotenv').config();
 const Koa = require('koa');
 const koaBody = require('koa-body');
 
-const users = require('./routers/users');
-const bets = require('./routers/bets');
+const users = require('./src/routers/users');
+const bets = require('./src/routers/bets');
+const awards = require('./src/routers/awards');
 
 const app = new Koa();
 const PORT = process.env.PORT;
-
-console.log('ALEXDEBUG: process.env', process.env)
 
 app.use(koaBody());
 
@@ -31,6 +30,7 @@ app.use(async (ctx, next) => {
 app
   .use(users.routes())
   .use(bets.routes())
+  .use(awards.routes())
 
 const server = app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);

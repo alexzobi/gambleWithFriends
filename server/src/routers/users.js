@@ -10,7 +10,15 @@ users.put('/users', (ctx) => {
   ctx.body = 'you reached users put';
 });
 
-users.post('/users', (ctx) => {
+users.post('/users/signup', (ctx) => {
+  const { email, password, firstName, lastName } = ctx.request.body;
+
+  if (!email || !password || !firstName || !lastName) ctx.throw(400);
+
+  ctx.body = 'you reached users post';
+});
+
+users.post('/users/login', (ctx) => {
   ctx.body = 'you reached users post';
 });
 
