@@ -11,9 +11,9 @@ users.put('/users', (ctx) => {
 });
 
 users.post('/users/signup', (ctx) => {
-  const { email, password, firstName, lastName } = ctx.request.body;
+  const { email, password, userName } = ctx.request.body;
 
-  if (!email || !password || !firstName || !lastName) ctx.throw(400);
+  if (!email || !password || !userName) ctx.throw(400);
 
   ctx.body = 'you reached users post';
 });
