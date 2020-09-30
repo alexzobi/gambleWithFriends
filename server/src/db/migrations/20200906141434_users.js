@@ -13,6 +13,8 @@ export async function up (knex) {
       .string('email')
       .notNull()
       .unique();
+    table.string('firstName');
+    table.string('lastName');
     table.string('password').notNull();
     table.string('bio');
     table.string('avatar');
