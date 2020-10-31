@@ -43,7 +43,7 @@ export type Type =
   | 'caption1'
   | 'caption2'
   | 'bottomNav'
-  | 'title1'
+  | 'title'
 
 const fontSizeMap = {
   xxlarge: 28,
@@ -58,7 +58,7 @@ const fontSizeMap = {
   caption1: 12,
   caption2: 11,
   bottomNav: 9,
-  title1: 28,
+  title: 34,
 };
 
 const accessibilityMap = {
@@ -74,7 +74,7 @@ const accessibilityMap = {
   caption1: 3.58,
   caption2: 3.63,
   bottomNav: 3.63,
-  title1: 3.63,
+  title: 3.63,
 };
 
 const StyledText = ({
@@ -91,7 +91,7 @@ const StyledText = ({
       styles.Text,
       {
         fontSize: fontSizeMap[type],
-        fontWeight: weight ?? (['headline1', 'headline2', 'title1'].includes(type) ? 'bold' : undefined),
+        fontWeight: weight ?? (['headline1', 'headline2', 'title'].includes(type) ? 'bold' : undefined),
         textAlign,
         lineHeight,
         color: color ?? Color.Dark.default,
