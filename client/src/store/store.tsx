@@ -1,5 +1,3 @@
-import axios, { AxiosRequestConfig, AxiosError } from 'axios';
-import Config from 'react-native-config';
 import { applyMiddleware, createStore, compose } from 'redux';
 import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'

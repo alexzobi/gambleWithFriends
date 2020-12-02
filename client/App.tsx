@@ -12,6 +12,7 @@ import Wallet from './src/screens/Wallet';
 import Bets from './src/screens/Bets';
 import Home from './src/screens/Home';
 import Settings from './src/screens/Settings';
+import Awards from './src/screens/Awards';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,6 +27,7 @@ export default function App() {
           <Tab.Screen name="Home" component={Home} />
           <Tab.Screen name="Wallet" component={Wallet} />
           <Tab.Screen name="Bets" component={Bets} />
+          <Tab.Screen name="Awards" component={Awards} />
           <Tab.Screen name="Settings" component={Settings} />
           <Tab.Screen name="UI Kit" component={UIKit} />
         </Tab.Navigator>

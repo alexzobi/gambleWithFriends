@@ -1,10 +1,19 @@
 import { combineReducers } from 'redux';
 
-import { AppActionPayload } from '../store/types';
 import auth from './data/auth/reducer';
+import bets from './data/bets/reducer';
+import awards from './data/awards/reducer';
+import groups from './data/groups/reducer';
+import settings from './data/settings/reducer';
+import wallet from './data/wallet/reducer';
 
 export const rootReducer = combineReducers({
   auth,
+  bets,
+  awards,
+  groups,
+  settings,
+  wallet,
 });
 
 export type ReturnState = ReturnType<typeof rootReducer>;

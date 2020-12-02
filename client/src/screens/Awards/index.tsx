@@ -6,10 +6,10 @@ type Props = {
 
 }
 
-const Bets = ({}: Props) => (
+const Awards = ({}: Props) => (
   <ScrollView style={{ paddingHorizontal: 24, paddingVertical: 40 }}>
-    <Text type="title">Bets</Text>
+    <Text type="title">Awards</Text>
   </ScrollView>
 );
 
-export default Bets;
+export default Awards;
