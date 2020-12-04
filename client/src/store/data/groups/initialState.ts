@@ -4,16 +4,22 @@ export type Group = {
   description: string;
   currency: string;
   members: string[];
+  bankValue: number;
+  initialMemberValue: number;
+  administrator: string;
+  voteRequirement: number;
+  allowNegativeBalance: boolean;
+  createdAt: Date;
 }
 
 type GroupState = {
   groups: Group[],
-  activeGroup: string;
+  defaultGroup: string;
 }
 
 const initialState: GroupState = {
   groups: [],
-  activeGroup: '',
+  defaultGroup: '',
 }
 
 export default initialState;

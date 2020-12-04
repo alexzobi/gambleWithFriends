@@ -9,6 +9,7 @@ export type Bet = {
   odds: number;
   title: string;
   description: string;
+  groupId: string;
 }
 
 type BetState = {

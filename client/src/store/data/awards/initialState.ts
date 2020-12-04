@@ -3,9 +3,10 @@ export type Award = {
   updatedAt: Date;
   awarder: string;
   awardee: string;
+  approvers: string[];
   value: number;
   currency: string;
-  title: string;
+  name: string;
   description: string;
   status: "PENDING" | "COMPLETE" | "DECLINED";
 }

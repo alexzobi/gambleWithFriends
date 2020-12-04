@@ -2,14 +2,14 @@ export async function up (knex) {
   await knex.schema.dropTableIfExists('Bets');
   await knex.schema.createTable('Bets', table => {
     table.uuid('id').primary().unique().notNull();
-    table.uuid('groupId').references('Groups.id').notNull();
-    table.uuid('userA').references('Users.id').notNull();
-    table.uuid('userB').references('Users.id').notNull();
-    table.integer('userAOdds').notNull();
-    table.integer('userBOdds').notNull();
+    table.string('name').notNull();
+    table.string('description');
+    table.integer('odds').notNull().defaultTo(1);
     table.integer('value').notNull();
-    table.string('status').notNull();
-    table.string('description').notNull();
+    table.string('status').notNull().defaultTo('PENDING');
+    table.uuid('better').references('Users.id').notNull();
+    table.uuid('bettee').references('Users.id').notNull();
+    table.uuid('groupId').references('Groups.id').notNull();
     table.dateTime('createdAt').notNull();
     table.dateTime('updatedAt').notNull();
   });

@@ -6,7 +6,7 @@ export async function up (knex) {
     table.integer('bankValue').notNull().defaultsTo(0);
     table.integer('initialMemberValue').notNull().defaultsTo(0);
     table.string('description');
-    table.string('currencyName').notNull();
+    table.string('currency').notNull();
     table.string('administrator').references('Users.id').notNull();
     table.integer('voteRequirement').notNull().defaultsTo(2);
     table.boolean('allowNegativeBalance').defaultsTo(true);

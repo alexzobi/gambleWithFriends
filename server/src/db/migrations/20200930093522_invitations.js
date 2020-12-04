@@ -7,7 +7,7 @@ export async function up (knex) {
     table.uuid('inviter').references('Users.id').notNull();
     table.uuid('invitee').references('Users.id').notNull();
     table.string('message');
-    table.boolean('accepted').defaultsTo(false);
+    table.boolean('status').defaultsTo('PENDING');
   });
 };
 
