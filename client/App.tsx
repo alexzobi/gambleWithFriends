@@ -20,8 +20,6 @@ import Login from './src/screens/Auth/Login';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const loggedIn = store.getState().auth.username;
-
   return (
     <Provider store={store}>
       <PersistGate
@@ -30,10 +28,13 @@ export default function App() {
       >
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName={loggedIn ? "Home" : "Login"}
-            screenOptions={{ tabBarVisible: false }}
+            initialRouteName={!!store.getState().auth.username ? "Home" : "Login"}
           >
-            <Tab.Screen name="Login" component={Login} />
+            <Tab.Screen
+              name="Login"
+              component={Login}
+              options={{ tabBarVisible: false }}
+            />
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Wallet" component={Wallet} />
             <Tab.Screen name="Bets" component={Bets} />
