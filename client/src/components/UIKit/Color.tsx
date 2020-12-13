@@ -5,9 +5,14 @@ const Color = {
     light: 'lightgray',
   },
   Primary: {
-    default: '#008223',
-    dark: '#004D14',
+    default: '#004D14',
+    medium: '#008223',
     light: '#00C434',
+  },
+  Error: {
+    default: '#FA4A5B',
+    medium: '#FFB6BD',
+    light: '#FFF1F1',
   },
 };
 
