@@ -15,8 +15,9 @@ const authReducer: ReducerMap<AuthState> = {
   [LOGIN_REQUEST]: state => ({
     ...state,
   }),
-  [LOGIN_SUCCESS]: state => ({
+  [LOGIN_SUCCESS]: (state, { payload }) => ({
     ...state,
+    username: payload.username,
   }),
   [LOGIN_FAIL]: state => ({
     ...state,

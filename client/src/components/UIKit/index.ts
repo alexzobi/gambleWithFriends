@@ -7,6 +7,7 @@ import Positioner, { PositionProps } from './Positioner/Positioner';
 import SafeAreaView from './Positioner/Positioner';
 import TextInput from './TextInput/TextInput';
 import Display from './Display';
+import Button from './Button/Button';
 
 export {
   View,
@@ -18,6 +19,7 @@ export {
   SafeAreaView,
   TextInput,
   Display,
+  Button,
 };
 
 export type {

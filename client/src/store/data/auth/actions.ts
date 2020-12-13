@@ -5,17 +5,11 @@ export const SIGNUP_REQUEST = 'auth/SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'auth/SIGNUP_SUCCESS';
 export const SIGNUP_FAIL = 'auth/SIGNUP_FAIL';
 
-type SignupPayload = {
+export const signup = (
   username: string,
   email: string,
   password: string,
-};
-
-export const signup = ({
-  username,
-  email,
-  password,
-}: SignupPayload) => {
+) => {
   const config = {
     method: 'POST',
     url: 'v1/auth/signup',
@@ -39,12 +33,10 @@ export const signup = ({
   }
 };
 
-type LoginPayload = Omit<SignupPayload, 'email'>;
-
-export const login = ({
-  username,
-  password,
-}: LoginPayload) => {
+export const login = (
+  username: string,
+  password: string,
+) => {
   const config = {
     method: 'POST',
     url: 'v1/auth/login',
@@ -54,15 +46,5 @@ export const login = ({
     }
   }
 
-  return {
-    type: 'SIGNUP_REQUEST',
-    payload: { username, password },
-    meta: {
-      offline: {
-        effect: config,
-        commit: { type: 'SIGNUP_SUCCESS', meta: { username } },
-        rollback: { type: 'SIGNUP_FAIL', meta: { username } }
-      }
-    }
-  }
+  return { type: LOGIN_SUCCESS, payload: { username }};
 };

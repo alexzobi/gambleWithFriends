@@ -24,6 +24,7 @@ interface StyledProps extends PositionProps, TextProps {
   lineHeight?: number;
   onLayout?: (e: LayoutChangeEvent) => void;
   underline?: boolean;
+  fontSize?: number;
 }
 
 interface Props extends Omit<StyledProps, 'type'> {
@@ -86,13 +87,14 @@ const StyledText = ({
   color,
   style,
   underline,
+  fontSize,
   ...props
 }: StyledProps) => (
   <RNText
     style={[
       styles.Text,
       {
-        fontSize: fontSizeMap[type],
+        fontSize: fontSize ?? fontSizeMap[type],
         fontWeight: weight ?? (['headline1', 'headline2', 'title'].includes(type) ? 'bold' : undefined),
         textAlign,
         lineHeight,
@@ -130,6 +132,7 @@ const Text = ({
   onLayout,
   flex,
   underline,
+  fontSize,
 }: Props) => {
   const renderText = () => (
     <StyledText
@@ -143,6 +146,7 @@ const Text = ({
       textAlign={textAlign}
       lineHeight={lineHeight}
       underline={underline}
+      fontSize={fontSize}
     >
       {children}
     </StyledText>

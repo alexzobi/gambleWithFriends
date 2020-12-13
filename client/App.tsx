@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';import { PersistGate } from 'redux-persist/integration/react';
 
 import { persistor, store } from './src/store/store';
+import { AppState } from './src/store/types';
 
 
 
@@ -19,6 +20,8 @@ import Login from './src/screens/Auth/Login';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const loggedIn = store.getState().auth.username;
+
   return (
     <Provider store={store}>
       <PersistGate
@@ -27,7 +30,7 @@ export default function App() {
       >
         <NavigationContainer>
           <Tab.Navigator
-            initialRouteName="Login"
+            initialRouteName={loggedIn ? "Home" : "Login"}
             screenOptions={{ tabBarVisible: false }}
           >
             <Tab.Screen name="Login" component={Login} />

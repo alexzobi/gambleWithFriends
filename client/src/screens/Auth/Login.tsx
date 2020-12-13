@@ -1,7 +1,18 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { LayoutAnimation } from 'react-native';
+import { useDispatch } from 'react-redux';
 
-import { View, Text, Color, TextInput, Display } from '../../components/UIKit';
+import {
+  View,
+  Text,
+  Color,
+  TextInput,
+  Display,
+  Button,
+} from '../../components/UIKit';
+
+import { login } from '../../store/data/auth/actions';
 
 type Props = {
 
@@ -14,6 +25,15 @@ const Component = ({}: Props) => {
   const [password, setPassword] = useState('');
   const [passwordReenter, setPasswordReenter] = useState('');
   const [isSignup, setIsSignup] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  const onLogin = () => {
+    dispatch(login(username, password));
+
+    navigation.navigate("Home");
+  }
 
   return (
     <View
@@ -45,7 +65,23 @@ const Component = ({}: Props) => {
           mb={24}
         />
       </Display>
-      <Text onPress={() => setIsSignup(!isSignup)}>
+      <Button
+        mv={24}
+        onPress={onLogin}
+        label="Submit"
+        color={Color.Primary.dark}
+        disabled={
+          !username
+          || !password
+          || (isSignup ? !passwordReenter : false)
+        }
+      />
+      <Text
+        position="absolute"
+        bottom={50}
+        alignSelf="center"
+        onPress={() => setIsSignup(!isSignup)} color="white"
+      >
         {isSignup ? "Already have an account?" : "Need to sign up?"}
       </Text>
     </View>
