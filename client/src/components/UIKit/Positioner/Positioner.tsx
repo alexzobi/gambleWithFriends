@@ -17,51 +17,10 @@ export type PositionProps = {
   alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
   height?: number | string;
   width?: number | string;
-  flex? : number
+  flex?: number
+  flexGrow?: number,
   children?: ReactNode
 }
-
-const StyledView = ({
-  position,
-  left,
-  right,
-  bottom,
-  top,
-  height,
-  width,
-  flex,
-  m,
-  mb,
-  mt,
-  mh,
-  mv,
-  ml,
-  mr,
-  alignSelf,
-  children,
-}: PositionProps) => (
-  <View
-    style={{
-      alignSelf,
-      left,
-      right,
-      top,
-      bottom,
-      height,
-      width,
-      flex,
-      position,
-      margin: m,
-      marginLeft: ml,
-      marginRight: mr,
-      marginTop: mt,
-      marginBottom: mb,
-      marginHorizontal: mh,
-      marginVertical: mv,
-    }}
-    children={children}
-  />
-)
 
 const Positioner = ({
   m,
@@ -81,27 +40,30 @@ const Positioner = ({
   height,
   flex,
   children,
+  flexGrow
 }: PositionProps) => (
-  <StyledView
-    m={m}
-    ml={ml}
-    mr={mr}
-    mv={mv}
-    mt={mt}
-    mb={mb}
-    mh={mh}
-    width={width}
-    height={height}
-    position={position}
-    left={left}
-    right={right}
-    bottom={bottom}
-    top={top}
-    alignSelf={alignSelf}
-    flex={flex}
-  >
-    {children}
-  </StyledView>
+  <View
+    style={{
+      alignSelf,
+      left,
+      right,
+      top,
+      bottom,
+      height,
+      width,
+      flex,
+      position,
+      margin: m,
+      marginLeft: ml,
+      marginRight: mr,
+      marginTop: mt,
+      marginBottom: mb,
+      marginHorizontal: mh,
+      marginVertical: mv,
+      flexGrow,
+    }}
+    children={children}
+  />
 );
 
 export default Positioner;

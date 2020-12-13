@@ -14,6 +14,7 @@ import Bets from './src/screens/Bets';
 import Home from './src/screens/Home';
 import Settings from './src/screens/Settings';
 import Awards from './src/screens/Awards';
+import Login from './src/screens/Auth/Login';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,7 +26,11 @@ export default function App() {
         persistor={persistor}
       >
         <NavigationContainer>
-          <Tab.Navigator>
+          <Tab.Navigator
+            initialRouteName="Login"
+            screenOptions={{ tabBarVisible: false }}
+          >
+            <Tab.Screen name="Login" component={Login} />
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Wallet" component={Wallet} />
             <Tab.Screen name="Bets" component={Bets} />

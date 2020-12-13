@@ -1,14 +1,8 @@
-type Swatch = {
-  dark?: string;
-  default?: string;
-  light?: string;
-};
-
-type ColorType = { [key: string]: Swatch };
-
-const Color: ColorType = {
+const Color = {
   Dark: {
     default: '#000436',
+    medium: 'gray',
+    light: 'lightgray',
   },
   Primary: {
     default: '#008223',
@@ -16,5 +10,9 @@ const Color: ColorType = {
     light: '#00C434',
   },
 };
+
+type Swatch = typeof Color[keyof typeof Color]
+
+export type ColorEnum = Swatch[keyof Swatch];
 
 export default Color;

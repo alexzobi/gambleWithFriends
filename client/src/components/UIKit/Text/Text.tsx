@@ -23,6 +23,7 @@ interface StyledProps extends PositionProps, TextProps {
   textAlign?: 'auto' | 'left' | 'right' | 'center' | 'justify';
   lineHeight?: number;
   onLayout?: (e: LayoutChangeEvent) => void;
+  underline?: boolean;
 }
 
 interface Props extends Omit<StyledProps, 'type'> {
@@ -84,6 +85,7 @@ const StyledText = ({
   lineHeight,
   color,
   style,
+  underline,
   ...props
 }: StyledProps) => (
   <RNText
@@ -95,6 +97,7 @@ const StyledText = ({
         textAlign,
         lineHeight,
         color: color ?? Color.Dark.default,
+        textDecorationLine: underline ? 'underline' : 'none',
         ...style,
       },
     ]}
@@ -126,44 +129,37 @@ const Text = ({
   style,
   onLayout,
   flex,
+  underline,
 }: Props) => {
-  function specificPlatfromText() {
-    if (Platform.OS === 'android' && onPress) {
+  const renderText = () => (
+    <StyledText
+      onLayout={onLayout}
+      style={style}
+      maxFontSizeMultiplier={accessibilityMap[type]}
+      type={type}
+      weight={weight}
+      color={color}
+      alignSelf={alignSelf}
+      textAlign={textAlign}
+      lineHeight={lineHeight}
+      underline={underline}
+    >
+      {children}
+    </StyledText>
+  );
+
+  function renderTouchSavvyText() {
+    if (onPress) {
       return (
-        <TouchableOpacity activeOpacity={1} onPress={onPress}>
-          <StyledText
-            onLayout={onLayout}
-            style={style}
-            maxFontSizeMultiplier={accessibilityMap[type]}
-            type={type}
-            weight={weight}
-            color={color}
-            alignSelf={alignSelf}
-            textAlign={textAlign}
-            lineHeight={lineHeight}
-          >
-            {children}
-          </StyledText>
+        <TouchableOpacity onPress={onPress}>
+          {renderText()}
         </TouchableOpacity>
       );
     }
-    return (
-      <StyledText
-        onLayout={onLayout}
-        style={style}
-        maxFontSizeMultiplier={accessibilityMap[type]}
-        type={type}
-        weight={weight}
-        color={color}
-        alignSelf={alignSelf}
-        textAlign={textAlign}
-        lineHeight={lineHeight}
-        onPress={onPress}
-      >
-        {children}
-      </StyledText>
-    );
+
+    return renderText();
   }
+
   return (
     <Positioner
       m={m}
@@ -181,7 +177,7 @@ const Text = ({
       alignSelf={alignSelf}
       flex={flex}
     >
-      {specificPlatfromText()}
+      {renderTouchSavvyText()}
     </Positioner>
   );
 };
